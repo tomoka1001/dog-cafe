@@ -54,7 +54,6 @@ Route::post('/admin/blog/blog_index', [AdminBlogController::class, 'store'])->na
 Route::get('/admin/blog/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
 Route::put('/admin/blog/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
 
-
 // 犬
 Route::get('/admin/dog/dog_index', [AdminDogController::class, 'index']);
 Route::get('/admin/dog/dog_create', [AdminDogController::class, 'create']);

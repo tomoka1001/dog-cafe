@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Dog;
 
 class AdminDogController extends Controller
 {
+    // 犬管理一覧表
     public function index()
     {
-        return view('/admin/blog/blog_index');
+        $dogs = Dog::all();
+        return view('/admin/dog/dog_index', ['dogs' => $dogs]);
     }
 
     public function create()

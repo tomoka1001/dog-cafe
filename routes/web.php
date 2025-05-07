@@ -55,8 +55,8 @@ Route::get('/admin/blog/{blog}', [AdminBlogController::class, 'edit'])->name('ad
 Route::put('/admin/blog/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
 
 // 犬
-Route::get('/admin/dog/dog_index', [AdminDogController::class, 'index']);
-Route::get('/admin/dog/dog_create', [AdminDogController::class, 'create']);
+Route::get('/admin/dog/dog_index', [AdminDogController::class, 'index'])->name('admin.blogs.index');;
+Route::get('/admin/dog/dog_create', [AdminDogController::class, 'create'])->name('admin.blogs.create');;
 Route::get('/admin/dog/dog_update', [AdminDogController::class, 'update']);
 
 // メール

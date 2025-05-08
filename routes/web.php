@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSalesController;
 use App\Http\Controllers\Admin\AdminReservationController;
 use App\Http\Controllers\Admin\AdminMenuController;
-use App\Http\Controllers\Admin\AdminMenulController;
 use App\Http\Controllers\Admin\AdminEmailController;
 use App\Http\Controllers\Admin\AdminDogController;
 use App\Http\Controllers\Admin\AdminBlogController;
@@ -55,9 +54,12 @@ Route::get('/admin/blog/{blog}', [AdminBlogController::class, 'edit'])->name('ad
 Route::put('/admin/blog/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
 
 // 犬
-Route::get('/admin/dog/dog_index', [AdminDogController::class, 'index'])->name('admin.blogs.index');;
-Route::get('/admin/dog/dog_create', [AdminDogController::class, 'create'])->name('admin.blogs.create');;
-Route::get('/admin/dog/dog_update', [AdminDogController::class, 'update']);
+Route::get('/admin/dogs/index', [AdminDogController::class, 'index'])->name('admin.dogs.index');
+Route::get('/admin/dogs/create', [AdminDogController::class, 'create'])->name('admin.dogs.create');
+Route::post('/admin/dogs/index', [AdminDogController::class, 'store'])->name('admin.dogs.store');
+Route::get('/admin/dogs/{dog}', [AdminDogController::class, 'edit'])->name('admin.dogs.edit');
+Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('admin.dogs.update');
+Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
 // メール
 Route::get('/admin/email/email_index', [AdminEmailController::class, 'index']);

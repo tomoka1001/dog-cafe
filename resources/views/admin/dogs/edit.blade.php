@@ -4,12 +4,13 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form action="{{ route('admin.dogs.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.dogs.update', ['dog' => $dog->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="flex px-6 pb-4 border-b">
-                    <h3 class="text-xl font-bold">WAN's登録</h3>
+                    <h3 class="text-xl font-bold">WAN's編集</h3>
                     <div class="ml-auto">
-                        <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">保存</button>
+                        <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">更新</button>
                     </div>
                 </div>
 
@@ -27,20 +28,20 @@
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="title">名前</label>
-                        <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
+                        <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name', $dog->name) }}">
                     </div>
 
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
                         <div class="flex items-end">
-                            <img id="previewImage" src="/images/admin/noimage.jpg" data-noimage="/images/admin/noimage.jpg" alt="" class="rounded shadow-md w-64">
+                            <img id="previewImage" src="{{ asset('storage/'. $dog->image )}}" data-noimage="{{ asset('storage/'. $dog->image )}}" alt="" class="rounded shadow-md w-64">
                             <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image">
                         </div>
                     </div>
 
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="body">本文</label>
-                        <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body') }}</textarea>
+                        <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body', $dog->body) }}</textarea>
                     </div>
                 </div>
             </form>
@@ -49,7 +50,7 @@
 </section>
 
 <script>
-    // ねこちゃんたち追加
+    // WAN's追加
     $('#js-pulldown').select2();
 
     // 画像プレビュー

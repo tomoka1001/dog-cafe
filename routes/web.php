@@ -14,6 +14,8 @@ use App\Http\Controllers\customer\TopController;
 use App\Http\Controllers\customer\InquiryController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\customer\CustomerDogcontroller;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -27,8 +29,10 @@ Route::get('/customer/inquiry/index', [InquiryController::class, 'index'])->name
 Route::post('/customer/inquiry/index', [InquiryController::class, 'sendMail']);
 Route::get('/customer/inquiry/complete', [InquiryController::class, 'complete'])->name('inquiry.complete');
 
+// わんこ紹介
+Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
+
 Route::get('customer/menu/index', fn()=> view('customer/menu/index'));
-Route::get('customer/dog/index', fn()=> view('customer/dog/index'));
 Route::get('customer/blogs/index', fn()=> view('customer/blogs/index'));
 Route::get('customer/blogs/detail', fn()=> view('customer/blogs/detail'));
 Route::get('/reservation', fn()=> view('customer/reservation'));

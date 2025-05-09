@@ -19,7 +19,7 @@
             <a class="text-3xl font-semibold leading-none" href="/">わんカフェ</a>
             <ul class="hidden lg:flex ml-12 mr-auto space-x-12">
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/index">トップ</a></li>
-                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/dog/index">わんこ紹介</a></li>
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/dogs/index">わんこ紹介</a></li>
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/blogs/detail">ブログ</a></li>
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/menu/index">メニュー</a></li>
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/customer/inquiry/index">お問い合わせ</a></li>
@@ -47,9 +47,9 @@
 
         <ul class="text-white text-left hidden md:flex flex-wrap flex-col h-12 md:w-128">
             <li class="ml-6"><a href="/customer/index" class="hover:underline">トップ</a></li>
-            <li class="ml-6"><a href="customer/dog/index" class="hover:underline">わんこ紹介</a></li>
-            <li class="ml-6"><a href="customer/blogs/detail" class="hover:underline">ブログ</a></li>
-            <li class="ml-6"><a href="customer/menu/index"class="hover:underline">メニュー</a></li>
+            <li class="ml-6"><a href="/customer/dogs/index" class="hover:underline">わんこ紹介</a></li>
+            <li class="ml-6"><a href="/customer/blogs/detail" class="hover:underline">ブログ</a></li>
+            <li class="ml-6"><a href="/customer/menu/index"class="hover:underline">メニュー</a></li>
             <li class="ml-6"><a href="/contact" href="/customer/inquiry/index">お問い合わせ</a></li>
             <li class="ml-6"><a href="/contact" href="/reservation">ご予約</a></li>
 

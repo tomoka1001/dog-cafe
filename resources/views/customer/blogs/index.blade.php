@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('customer.layouts.default')
 @section('title', 'ブログ一覧')
 
 @section('content')

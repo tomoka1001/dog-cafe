@@ -71,7 +71,7 @@ Route::get('/admin/email/email_create', [AdminEmailController::class, 'create'])
 Route::get('/admin/email/email_update', [AdminEmailController::class, 'update']);
 
 // メニュー
-Route::get('/admin/menu/manu_index', [AdminMenuController::class, 'index']);
+Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');
 Route::get('/admin/menu/manu_create', [AdminMenuController::class, 'create']);
 Route::get('/admin/menu/manu_update', [AdminMenuController::class, 'update']);
 

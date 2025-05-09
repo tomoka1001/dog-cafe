@@ -9,16 +9,16 @@ class AdminMenuController extends Controller
 {
     public function index()
     {
-        return view('/admin/menu/menu_index');
+        return view('admin.menus.index');
     }
 
     public function create()
     {
-        return view('/admin/menu/menu_create');
+        return view('admin.menus.create');
     }
 
     public function update()
     {
-        return view('/admin/menu/menu_update');
+        return view('admin.menus.edit');
     }
 }

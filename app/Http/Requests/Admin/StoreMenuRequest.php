@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBlogRequest extends FormRequest
+class StoreMenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,10 +19,10 @@ class StoreBlogRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'title' => ['required', 'max:255'],
+            'name' => ['required', 'max:255'],
             'image' => [
                 'required',
                 'file', // ファイルがアップロードされている
@@ -31,8 +31,7 @@ class StoreBlogRequest extends FormRequest
                 'mimes:jpeg,jpg,png', // 形式はjpegかpng
                 'dimensions:min_width=300,min_height=300,max_width=1200,max_height=1200', // 画像の解像度が300px * 300px ~ 1200px * 1200px
             ],
-            'body' => ['required', 'max:20000'],
+            'price' => ['required', 'max:20000'],
         ];
     }
 }
-

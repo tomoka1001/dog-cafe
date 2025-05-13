@@ -15,6 +15,7 @@ use App\Http\Controllers\customer\InquiryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\customer\CustomerDogcontroller;
+use App\Http\Controllers\customer\CustomerMenuController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -32,7 +33,7 @@ Route::get('/customer/inquiry/complete', [InquiryController::class, 'complete'])
 // わんこ紹介
 Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
 
-Route::get('customer/menu/index', fn()=> view('customer/menu/index'));
+Route::get('customer/menus/index', [CustomerMenuController::class, 'index']);
 Route::get('customer/blogs/index', fn()=> view('customer/blogs/index'));
 Route::get('customer/blogs/detail', fn()=> view('customer/blogs/detail'));
 Route::get('/reservation', fn()=> view('customer/reservation'));
@@ -72,8 +73,11 @@ Route::get('/admin/email/email_update', [AdminEmailController::class, 'update'])
 
 // メニュー
 Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');
-Route::get('/admin/menu/manu_create', [AdminMenuController::class, 'create']);
-Route::get('/admin/menu/manu_update', [AdminMenuController::class, 'update']);
+Route::get('/admin/menus/create', [AdminMenuController::class, 'create'])->name('admin.menus.create');
+Route::post('/admin/menus/index', [AdminMenuController::class, 'store'])->name('admin.menus.store');
+Route::get('/admin/menus/{menu}', [AdminMenuController::class, 'edit'])->name('admin.menus.edit');
+Route::put('/admin/menus/{menu}', [AdminMenuController::class, 'update'])->name('admin.menus.update');
+Route::delete('/admin/menus/{menu}', [AdminMenuController::class, 'destroy'])->name('admin.menus.destroy');
 
 // 予約
 Route::get('/admin/reservation/reservation_index', [AdminReservationController::class, 'index']);

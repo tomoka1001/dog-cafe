@@ -11,7 +11,7 @@ class CustomerDogcontroller extends Controller
     public function index()
     {
         $dogs = Dog::all();
-        // compact('dogs')はcompact('dogs')と同じ
+        // compact('dogs')は['dogs' => $dogs]と同じ
         return view('customer.dogs.index', compact('dogs'));
     }
 }

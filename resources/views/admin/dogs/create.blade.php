@@ -15,7 +15,7 @@
 
                 <div class="pt-4 px-6">
                     <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    @if($errors->any())
+                    {{-- @if($errors->any())
                     <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
                         <ul>
                             @foreach ( $errors->all() as $error)
@@ -23,24 +23,36 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif
+                    @endif --}}
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
+                    {{-- 名前のエラー --}}
                     <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="title">名前</label>
-                        <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
+                        <label class="block text-sm font-medium mb-2" for="name">名前</label>
+                        <input id="name" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
 
+                    {{-- 画像のエラー --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
                         <div class="flex items-end">
                             <img id="previewImage" src="/images/admin/noimage.jpg" data-noimage="/images/admin/noimage.jpg" alt="" class="rounded shadow-md w-64">
                             <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image">
                         </div>
+                        @error('image')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
 
+                    {{-- 本文エラー --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="body">本文</label>
                         <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body') }}</textarea>
+                        @error('body')
+                            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </form>

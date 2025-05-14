@@ -15,7 +15,7 @@
 
                 <div class="pt-4 px-6">
                     <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    @if($errors->any())
+                    {{-- @if($errors->any())
                     <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
                         <ul>
                             @foreach ( $errors->all() as $error)
@@ -23,13 +23,18 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif
+                    @endif --}}
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
+                    {{-- タイトル未入力 --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="title">タイトル</label>
                         <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="title" value="{{ old('title') }}">
                     </div>
+                    @error('title')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
 
+                    {{-- 画像エラー --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
                         <div class="flex items-end">
@@ -37,38 +42,18 @@
                             <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image">
                         </div>
                     </div>
+                    @error('image')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
 
+                    {{-- 本文エラー --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="body">本文</label>
                         <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body') }}</textarea>
                     </div>
-
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="category">カテゴリ</label>
-                        <div class="flex">
-                            <select id="category" class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded" name="">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
-                            </select>
-                            <div class="pointer-events-none transform -translate-x-full flex items-center px-2 text-gray-500">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2">登場するねこ</label>
-                        <select id="js-pulldown" class="mr-6 w-full" name="" multiple>
-                            <option selected>Option 1</option>
-                            <option>Option 2</option>
-                            <option selected>Option 3</option>
-                            <option>Option 4</option>
-                        </select>
-                    </div>
+                    @error('body')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
             </form>
         </div>

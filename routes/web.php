@@ -52,11 +52,12 @@ Route::get('/admin/login/login', [LoginController::class, 'loginForm']);
 Route::post('/admin/login/login', [LoginController::class, 'login'])->name('login');
 
 // ブログ
-Route::get('/admin/blog/blog_index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
-Route::get('/admin/blog/blog_create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
-Route::post('/admin/blog/blog_index', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
-Route::get('/admin/blog/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
-Route::put('/admin/blog/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
+Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
+Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
+Route::post('/admin/blogs/index', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+Route::get('/admin/blogs/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
+Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
+Route::delete('/admin/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
 // 犬
 Route::get('/admin/dogs/index', [AdminDogController::class, 'index'])->name('admin.dogs.index');

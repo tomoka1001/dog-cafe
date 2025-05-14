@@ -16,13 +16,13 @@ class AdminBlogController extends Controller
     public function index()
     {
         $blogs = Blog::all();
-        return view('/admin/blog/blog_index', ['blogs' => $blogs]);
+        return view('admin.blogs.index', ['blogs' => $blogs]);
     }
 
     // ブログ投稿画面
     public function create()
     {
-        return view('/admin/blog/blog_create');
+        return view('admin.blogs.create');
     }
 
     // ブログ投稿処理
@@ -47,7 +47,7 @@ class AdminBlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('admin.blog.edit', ['blog' => $blog]);
+        return view('admin.blogs.edit', ['blog' => $blog]);
     }
 
     // 指定したIDのブログ更新処理
@@ -65,14 +65,18 @@ class AdminBlogController extends Controller
         }
         $blog->update($updateDate);
 
-        return to_route('/admin/blog/blog_index')->with('success', 'ブログを更新しました');
+        return to_route('admin.blogs.index')->with('success', 'ブログを更新しました');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // 指定したIDのブログの削除処理
     public function destroy(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+        // 更新前の画像削除
+        Storage::disk('public')->delete($blog->image);
+
+        return to_route('admin.blogs.index')->with('success', "ブログを削除しました");
+
     }
 }

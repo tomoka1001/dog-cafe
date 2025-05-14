@@ -15,7 +15,7 @@
 
                 <div class="pt-4 px-6">
                     <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    @if($errors->any())
+                    {{-- @if($errors->any())
                     <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
                         <ul>
                             @foreach ( $errors->all() as $error)
@@ -23,12 +23,15 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif
+                    @endif --}}
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="name">メニュー名</label>
-                        <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
+                        <input id="name" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
                     </div>
+                    @error('name')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
 
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
@@ -37,11 +40,17 @@
                             <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image">
                         </div>
                     </div>
+                    @error('image')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
 
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="price">価格</label>
                         <input id="price" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="number" name="price" value="{{ old('price') }}">
                     </div>
+                    @error('price')
+                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
             </form>
         </div>

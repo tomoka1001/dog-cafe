@@ -34,5 +34,16 @@ class StoreBlogRequest extends FormRequest
             'body' => ['required', 'max:20000'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'タイトルは必須です。',
+            'image.required' => '画像をアップロードしてください。',
+            'image.image' => '画像ファイルを選択してください。',
+            'image.dimensions' => '画像のサイズは300px以上、1200px以下にしてください。',
+            'body.required' => '本文は必須です。',
+        ];
+    }
 }
 

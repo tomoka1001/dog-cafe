@@ -9,13 +9,14 @@ use App\Http\Controllers\Admin\AdminDogController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\JoinController;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\customer\CustomerLoginController;
 use App\Http\Controllers\customer\TopController;
 use App\Http\Controllers\customer\InquiryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\customer\CustomerDogcontroller;
 use App\Http\Controllers\customer\CustomerMenuController;
+use App\Http\Controllers\customer\CustomerReservationController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -33,16 +34,24 @@ Route::get('/customer/inquiry/complete', [InquiryController::class, 'complete'])
 // わんこ紹介
 Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
 
+// メニュー
 Route::get('customer/menus/index', [CustomerMenuController::class, 'index']);
+
+// 予約
+Route::get('customer/reservations/index', [CustomerReservationController::class, 'index']);
+
+// customer管理
+Route::get('customer/login/create', [CustomerLoginController::class, 'create'])->name('customer.login.create');
+
 Route::get('customer/blogs/index', fn()=> view('customer/blogs/index'));
 Route::get('customer/blogs/detail', fn()=> view('customer/blogs/detail'));
-Route::get('/reservation', fn()=> view('customer/reservation'));
-
 
 // 管理者側
 Route::get('/admin/index', [AdminController::class, 'index']);
 
 // 会員登録画面
+
+
 Route::get('admin/join/join_index', [JoinController::class, 'index']);
 Route::post('admin/join/join_check', [JoinController::class, 'create']);
 Route::get('admin/join/join_thanks', [JoinController::class, 'update']);

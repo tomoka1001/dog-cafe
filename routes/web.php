@@ -42,6 +42,8 @@ Route::get('customer/menus/index', [CustomerMenuController::class, 'index']);
 Route::get('/customer/reservations.thanks', [CustomerReservationController::class, 'index'])->name('customer.reservations.thanks');
 Route::get('/customer/reservations/create', [CustomerReservationController::class, 'create'])->name('customer.reservations.create');
 Route::post('/customer/reservations/store', [CustomerReservationController::class, 'store'])->name('customer.reservations.store');
+Route::get('/reservations/status', [CustomerReservationController::class, 'status'])->name('customer.reservations.status');
+
 
 // customer管理
 Route::get('customer/login/create', [CustomerLoginController::class, 'create'])->name('customer.login.create');

@@ -4,8 +4,9 @@
     { id: 'name_kana', errorId: 'errorMessageNameKana', message: 'お名前（カナ）は必須です。' },
     { id: 'email', errorId: 'errorMessageEmail', message: 'メールアドレスは必須です。' },
     { id: 'phone', errorId: 'errorMessagePhone', message: '電話番号は必須です。' },
-    { id: 'people', errorId: 'errorMessagePople', message: 'ご予約人数は必須です。' },
-    { id: 'time', errorId: 'errorMessageTime', message: 'ご予約時間は必須です。' },
+    { id: 'people', errorId: 'errorMessagePeople', message: 'ご予約人数は必須です。' },
+    { id: 'reserved_date', errorId: 'errorMessageDate', message: 'ご予約日は必須です。' },
+    { id: 'reserved_time', errorId: 'errorMessageTime', message: 'ご予約時間は必須です。' },
   ];
 
   // 各フィールドにblurイベントを登録
@@ -21,23 +22,6 @@
       }
     });
   });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const reservedAtInput = document.getElementById('reserved_at');
-
-    reservedAtInput.addEventListener('change', () => {
-        const value = reservedAtInput.value;
-        if (!value) return;
-
-        const date = new Date(value);
-        const minutes = date.getMinutes();
-
-        if (minutes !== 0 && minutes !== 30) {
-            alert('ご予約は00分または30分の時間のみ選択できます。');
-            reservedAtInput.value = ''; // リセット
-        }
-    });
-});
 
 
 // fields.forEach(field => { ... })

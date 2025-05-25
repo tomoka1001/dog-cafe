@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->text('email');
-            $table->text('tell');
-            $table->text('password');
-            $table->timestamps();
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->dropUnique('reservations_email_unique');
+            $table->dropUnique('reservations_phone_unique');
         });
     }
 
@@ -26,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('login');
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->unique('email');
+            $table->unique('phone');
+        });
     }
 };

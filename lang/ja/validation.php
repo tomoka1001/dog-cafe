@@ -161,4 +161,14 @@ return [
         'email' => 'メールアドレス',
         'body' => '本文',
     ],
+
+    'unique' => ':attribute はすでに使用されています。',
+    'attributes' => [
+        'email' => 'メールアドレス',
+        'name' => 'お名前',
+        'name_kana' => 'お名前（カナ）',
+        'phone' => '電話番号',
+        'reserved_at' => '予約日時',
+        'people' => '人数',
+    ],
 ];

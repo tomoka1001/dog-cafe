@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\customer\CustomerDogcontroller;
 use App\Http\Controllers\customer\CustomerMenuController;
 use App\Http\Controllers\customer\CustomerReservationController;
+use App\Models\customer;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -38,7 +39,9 @@ Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
 Route::get('customer/menus/index', [CustomerMenuController::class, 'index']);
 
 // 予約
-Route::get('customer/reservations/index', [CustomerReservationController::class, 'index']);
+Route::get('/customer/reservations.thanks', [CustomerReservationController::class, 'index'])->name('customer.reservations.thanks');
+Route::get('/customer/reservations/create', [CustomerReservationController::class, 'create'])->name('customer.reservations.create');
+Route::post('/customer/reservations/store', [CustomerReservationController::class, 'store'])->name('customer.reservations.store');
 
 // customer管理
 Route::get('customer/login/create', [CustomerLoginController::class, 'create'])->name('customer.login.create');
@@ -57,8 +60,8 @@ Route::post('admin/join/join_check', [JoinController::class, 'create']);
 Route::get('admin/join/join_thanks', [JoinController::class, 'update']);
 
 // ログイン
-Route::get('/admin/login/login', [LoginController::class, 'loginForm']);
-Route::post('/admin/login/login', [LoginController::class, 'login'])->name('login');
+// Route::get('/admin/login/login', [LoginController::class, 'loginForm']);
+// Route::post('/admin/login/login', [LoginController::class, 'login'])->name('login');
 
 // ブログ
 Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
@@ -77,7 +80,7 @@ Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('ad
 Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
 // メール
-Route::get('/admin/email/email_index', [AdminEmailController::class, 'index']);
+Route::get('/admin/email/email_index', [AdminEmailController::class, 'index']);;
 Route::get('/admin/email/email_create', [AdminEmailController::class, 'create']);
 Route::get('/admin/email/email_update', [AdminEmailController::class, 'update']);
 
@@ -108,3 +111,6 @@ Route::get('/admin/setting/setting_update', [AdminSettingController::class, 'upd
 Route::get('/admin/shift/shift_index', [AdminShiftController::class, 'index']);
 Route::get('/admin/shift/shift_create', [AdminShiftController::class, 'create']);
 Route::get('/admin/shift/shift_update', [AdminShiftController::class, 'update']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

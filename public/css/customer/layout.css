@@ -1,0 +1,9 @@
+@import url('../normalize.css');
+
+header {
+    background-color: rgba(164, 93, 45, 0.805);
+}
+
+.title {
+    font-family: 'Sacramento';;
+}

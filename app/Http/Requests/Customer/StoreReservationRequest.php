@@ -35,10 +35,10 @@ class StoreReservationRequest extends FormRequest
             'before_or_equal:' . now()->addDays(13)->toDateString(),
             ],
 
-            // 固定時間枠のみ許可（11:00〜16:00）
+            // 固定時間枠のみ許可（11:00〜17:00）
             'reserved_time' => [
             'required',
-            'in:11:00,12:00,13:00,14:00,15:00,16:00',
+            'in:11:00,12:00,13:00,14:00,15:00,16:00,17:00,'
             ],
 
             'body' => ['nullable', 'string', 'max:255'],

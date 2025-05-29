@@ -23,6 +23,52 @@
     });
   });
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const peopleInput = document.getElementById('people');
+    const dateInput = document.getElementById('reserved_date');
+    const timeInput = document.getElementById('reserved_time');
+    const errorMessagePeople = document.getElementById('errorMessagePeople');
+    const submitButton = document.getElementById('btn');
+
+    function extractRemainingSeats(status) {
+        const match = status.match(/◯\((\d+)\)/);
+        return match ? parseInt(match[1]) : 0;
+    }
+
+    function validatePeopleCount() {
+        const date = dateInput.value;
+        const time = timeInput.value;
+        const people = parseInt(peopleInput.value) || 0;
+
+        if (!date || !time || !reservationStatus[time] || !reservationStatus[time][date]) {
+            errorMessagePeople.textContent = '';
+            submitButton.disabled = false;
+            return;
+        }
+
+        const status = reservationStatus[time][date];
+        if (status === '✕') {
+            errorMessagePeople.textContent = 'この時間は満席です。別の時間を選んでください。';
+            submitButton.disabled = true;
+        } else {
+            const remaining = extractRemainingSeats(status);
+            if (people > remaining) {
+                errorMessagePeople.textContent = `残り空き枠は${remaining}名です。人数を減らしてください。`;
+                submitButton.disabled = true;
+            } else {
+                errorMessagePeople.textContent = '';
+                submitButton.disabled = false;
+            }
+        }
+    }
+
+    // 各項目が変化したときに検証
+    peopleInput.addEventListener('input', validatePeopleCount);
+    dateInput.addEventListener('change', validatePeopleCount);
+    timeInput.addEventListener('change', validatePeopleCount);
+});
+
+
 
 // fields.forEach(field => { ... })
 // fields は配列です（あなたが定義した「ID・エラーID・メッセージ」のリスト）。

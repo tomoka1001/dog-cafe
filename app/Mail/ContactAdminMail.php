@@ -18,6 +18,7 @@ class ContactAdminMail extends Mailable
     /**
      * Create a new message instance.
      */
+    // 送信内容を$contactInfoに入れる
     public function __construct(public array $contactInfo)
     {
         //
@@ -40,7 +41,7 @@ class ContactAdminMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            text: 'admin.email.adminEmail',
+            text: 'admin.email.index',
         );
     }
 

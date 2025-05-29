@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>@yield('title', "WAN's cafe")</title>
-        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/destyle.css">
         <link rel="stylesheet" href="/css/customer/layout.css">
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -12,11 +13,11 @@
         <header>
             <div>
                 <nav>
-                    <a class="title">WAN's cafe</a>
-                    <ul>
+                    <h1><a href="/customer/index" class="logo">WAN's cafe</a></h1>
+                    <ul class="menu">
                         <li><a href="/customer/index">トップ</a></li>
                         <li><a href="/customer/dogs/index">わんこ紹介</a></li>
-                        <li><a href="/customer/blogs/detail">ブログ</a></li>
+                        <li><a href="/customer/blogs/index">ブログ</a></li>
                         <li><a href="/customer/menus/index">メニュー</a></li>
                         <li><a href="/customer/inquiry/index">お問い合わせ</a></li>
                         <li><a href="/customer/reservations/create">ご予約</a></li>
@@ -43,7 +44,7 @@
                 <ul>
                     <li><a href="/customer/index">トップ</a></li>
                     <li><a href="/customer/dogs/index">わんこ紹介</a></li>
-                    <li><a href="/customer/blogs/detail">ブログ</a></li>
+                    <li><a href="/customer/blogs/index">ブログ</a></li>
                     <li><a href="/customer/menus/index">メニュー</a></li>
                     <li><a href="/customer/inquiry/index">お問い合わせ</a></li>
                     <li><a href="/customer/reservations/create">ご予約</a></li>

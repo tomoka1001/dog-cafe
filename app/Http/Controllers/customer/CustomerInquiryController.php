@@ -8,7 +8,7 @@ use App\Http\Requests\ContactRequest;
 use App\Mail\ContactAdminMail;
 use Illuminate\Support\Facades\Mail;
 
-class InquiryController extends Controller
+class CustomerInquiryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +18,14 @@ class InquiryController extends Controller
         return view('customer.inquiry.index');
     }
 
-    function sendMail(ContactRequest $request) {
-        $validated = $request->validated();
+     function sendMail(ContactRequest $request) {
+         $validated = $request->validated();
     
         // これ以降の行は入力エラーがなかった場合のみ実行されます
         // 登録処理(実際はメール送信などを行う)
-        Mail::to('admin@example.com')->send(new ContactAdminMail($validated));
-        return to_route('inquiry.complete');
-    }
+         Mail::to('admin@example.com')->send(new ContactAdminMail($validated));
+         return to_route('inquiry.complete');
+     }
 
     public function complete()
     {

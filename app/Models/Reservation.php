@@ -17,7 +17,8 @@ class Reservation extends Model
         'email',
         'phone',
         'people',
-        'reserved_at',
+        'reserved_date',
+        'reserved_time',
         'body',
     ];
 }

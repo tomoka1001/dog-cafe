@@ -11,12 +11,13 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\JoinController;
 use App\Http\Controllers\customer\CustomerLoginController;
 use App\Http\Controllers\customer\TopController;
-use App\Http\Controllers\customer\InquiryController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\customer\CustomerInquiryController;
 use App\Http\Controllers\customer\CustomerDogcontroller;
 use App\Http\Controllers\customer\CustomerMenuController;
 use App\Http\Controllers\customer\CustomerReservationController;
+use App\Http\Controllers\customer\CustomerBlogController;
 use App\Models\customer;
 
 // Route::get('/', function () {
@@ -28,18 +29,22 @@ use App\Models\customer;
 Route::get('/customer/index', [TopController::class, 'index']);
 
 // お問い合せフォーム
-Route::get('/customer/inquiry/index', [InquiryController::class, 'index'])->name('inquiry');
-Route::post('/customer/inquiry/index', [InquiryController::class, 'sendMail']);
-Route::get('/customer/inquiry/complete', [InquiryController::class, 'complete'])->name('inquiry.complete');
+Route::get('/customer/inquiry/index', [CustomerInquiryController::class, 'index'])->name('inquiry');
+Route::post('/customer/inquiry/index', [CustomerInquiryController::class, 'sendMail']);
+Route::get('/customer/inquiry/complete', [CustomerInquiryController::class, 'complete'])->name('inquiry.complete');
+Route::get('/admin/email/import', [AdminEmailController::class, 'import'])->name('admin.email.import');
 
 // わんこ紹介
 Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
+
+// ブログ
+Route::get('customer/blogs/index', [CustomerBlogcontroller::class, 'index']);
 
 // メニュー
 Route::get('customer/menus/index', [CustomerMenuController::class, 'index']);
 
 // 予約
-Route::get('/customer/reservations.thanks', [CustomerReservationController::class, 'index'])->name('customer.reservations.thanks');
+Route::get('/customer/reservations/thanks', [CustomerReservationController::class, 'index'])->name('customer.reservations.thanks');
 Route::get('/customer/reservations/create', [CustomerReservationController::class, 'create'])->name('customer.reservations.create');
 Route::post('/customer/reservations/store', [CustomerReservationController::class, 'store'])->name('customer.reservations.store');
 Route::get('/reservations/status', [CustomerReservationController::class, 'status'])->name('customer.reservations.status');
@@ -47,9 +52,6 @@ Route::get('/reservations/status', [CustomerReservationController::class, 'statu
 
 // customer管理
 Route::get('customer/login/create', [CustomerLoginController::class, 'create'])->name('customer.login.create');
-
-Route::get('customer/blogs/index', fn()=> view('customer/blogs/index'));
-Route::get('customer/blogs/detail', fn()=> view('customer/blogs/detail'));
 
 // 管理者側
 Route::get('/admin/index', [AdminController::class, 'index']);
@@ -82,9 +84,9 @@ Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('ad
 Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
 // メール
-Route::get('/admin/email/email_index', [AdminEmailController::class, 'index']);;
-Route::get('/admin/email/email_create', [AdminEmailController::class, 'create']);
-Route::get('/admin/email/email_update', [AdminEmailController::class, 'update']);
+Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.email.index');
+Route::get('/send-mail', [AdminEmailController::class, 'send']);
+Route::get('/email/import', [AdminEmailController::class, 'import'])->name('admin.email.import');
 
 // メニュー
 Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');

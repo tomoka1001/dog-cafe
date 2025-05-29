@@ -2,7 +2,7 @@
 @section('title', 'トップページ')
 
 @section('content')
-<section class="bg-gray-100">
+<section>
   <div>
     <h1>犬に癒やしてもらいませんか？</h1>
     <p>犬の可愛い仕草、自由気ままな雰囲気を見ることはもちろん、<br>
@@ -12,7 +12,7 @@
 </section>
 
 <section id="access">
-      <div>
+      <div class="topimage">
         <p>わんカフェ</p>
         <dl>
           <dt>営業時間</dt>

@@ -16,7 +16,8 @@
     <div><h1>メールアドレス：{{ $reservation->email }}</h1></div>
     <div><h1>電話番号：{{ $reservation->phone }}</h1></div>
     <div><h1>ご予約人数：{{ $reservation->people }}</h1></div>
-    <div><h1>ご予約日時：{{ $reservation->reserved_at }}</h1></div>
+    <div><h1>ご予約日：{{ $reservation->reserved_date }}</h1></div>
+    <div><h1>ご予約日：{{ $reservation->reserved_time }}</h1></div>
     <div><h1>ご要望：{{ $reservation->body }}</h1></div>
 </div>
 @endif

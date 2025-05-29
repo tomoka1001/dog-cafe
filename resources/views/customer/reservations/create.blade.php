@@ -1,14 +1,16 @@
 @extends('customer/layouts.default')
 
 @section('content')
+<script>
+    const reservationStatus = @json($status); // 先にグローバル変数として定義
+</script>
 <script src="/js/customer/reservations.js" defer></script>
 <link rel="stylesheet" href="/css/customer/reservations.css">
 <form action="{{ route('customer.reservations.store') }}" method="POST">
     @csrf
     <div>
-        <ul>
     <div class="container">
-        <h2 class="mb-4">予約状況（{{ \Carbon\Carbon::today()->format('n/j') }}〜）</h2>
+        <h2>予約状況（{{ \Carbon\Carbon::today()->format('n/j') }}〜）</h2>
 
         <div class="table-responsive">
             <table class="table table-bordered text-center">

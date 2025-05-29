@@ -1,9 +1,55 @@
-@import url('../normalize.css');
+@import url('../destyle.css');
 
-header {
-    background-color: rgba(164, 93, 45, 0.805);
+body {
+    background-color: rgba(249, 239, 225, 0.577);
 }
 
-.title {
-    font-family: 'Sacramento';;
+header {
+    height: 120px;
+    background-color: rgba(165, 104, 64, 0.805);
+}
+
+footer {
+    background-color: rgba(40, 41, 15, 0.619);
+}
+
+header, main, footer{
+    padding: 20px 30px;
+  }
+  
+div {
+    text-align: center;
+  } 
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav h1 {
+    font-family: 'Sacramento', cursive;
+    font-size: 2.3em;
+    font-weight: bold;
+}
+
+.topimage {
+    width: 1500px;               /* 任意のサイズ */
+    height: 700px;              /* 任意の高さ */
+    margin: 0 auto;             /* 中央に配置 */
+    background-image: url('/images/customer/cafe.jpg'); /* 画像のパスを指定 */
+    background-size: cover;                 /* 画面全体にフィット */
+    background-repeat: no-repeat;           /* 繰り返さない */
+    background-position: center center;     /* 中央に配置 */
+    border: 1px solid #ccc;     /* 枠線で範囲を見やすく */
+  }
+
+a:not(.logo):hover {
+    color: blue;
 }

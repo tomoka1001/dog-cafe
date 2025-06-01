@@ -25,7 +25,7 @@ class StoreReservationRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'name_kana' => ['required', 'string', 'max:255', 'regex:/^[ァ-ヶー \s]+$/u'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'phone' => ['nullable', 'regex:/^0\d{1,4}-?\d{1,4}-?\d{4}$/'],
+            'phone' => ['required', 'regex:/^0\d{1,4}-?\d{1,4}-?\d{4}$/'],
             'people' => ['required', 'integer', 'min:1', 'max:10'],
 
             // 予約日は「今日以降、2週間以内」

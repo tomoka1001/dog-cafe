@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reservation;
 
 class AdminReservationController extends Controller
 {
     public function index()
     {
-        return view('/admin/reservation/reservation_index');
+        $reservations = Reservation::all();
+        return view('admin.reservations.index', compact('reservations'));
     }
 
-    public function create()
+    public function show(string $id)
     {
-        return view('/admin/reservation/reservation_create');
-    }
-
-    public function update()
-    {
-        return view('/admin/reservation/reservation_update');
+        $reservation = Reservation::findOrFail($id);
+        return view('admin.reservations.show', ['reservation' => $reservation]);
     }
 }

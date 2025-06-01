@@ -19,7 +19,7 @@
                         <li><a href="/customer/dogs/index">わんこ紹介</a></li>
                         <li><a href="/customer/blogs/index">ブログ</a></li>
                         <li><a href="/customer/menus/index">メニュー</a></li>
-                        <li><a href="/customer/inquiry/index">お問い合わせ</a></li>
+                        <li><a href="/customer/emails/create">お問い合わせ</a></li>
                         <li><a href="/customer/reservations/create">ご予約</a></li>
                     </ul>
                 </nav>
@@ -46,7 +46,7 @@
                     <li><a href="/customer/dogs/index">わんこ紹介</a></li>
                     <li><a href="/customer/blogs/index">ブログ</a></li>
                     <li><a href="/customer/menus/index">メニュー</a></li>
-                    <li><a href="/customer/inquiry/index">お問い合わせ</a></li>
+                    <li><a href="/customer/emails/create">お問い合わせ</a></li>
                     <li><a href="/customer/reservations/create">ご予約</a></li>
                 </ul>
             </div>

@@ -13,7 +13,9 @@ use App\Http\Controllers\customer\CustomerLoginController;
 use App\Http\Controllers\customer\TopController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\customer\CustomerInquiryController;
+use App\Http\Controllers\EmailImportController;
+
+use App\Http\Controllers\customer\CustomerEmailController;
 use App\Http\Controllers\customer\CustomerDogcontroller;
 use App\Http\Controllers\customer\CustomerMenuController;
 use App\Http\Controllers\customer\CustomerReservationController;
@@ -29,10 +31,10 @@ use App\Models\customer;
 Route::get('/customer/index', [TopController::class, 'index']);
 
 // お問い合せフォーム
-Route::get('/customer/inquiry/index', [CustomerInquiryController::class, 'index'])->name('inquiry');
-Route::post('/customer/inquiry/index', [CustomerInquiryController::class, 'sendMail']);
-Route::get('/customer/inquiry/complete', [CustomerInquiryController::class, 'complete'])->name('inquiry.complete');
-Route::get('/admin/email/import', [AdminEmailController::class, 'import'])->name('admin.email.import');
+Route::get('/customer/emails/create', [CustomerEmailController::class, 'create'])->name('customer.emails.create');
+Route::post('/customer/emails/store', [CustomerEmailController::class, 'store'])->name('customer.emails.store');
+Route::get('/customer/emails/complete', [CustomerEmailController::class, 'complete'])->name('emails.complete');
+
 
 // わんこ紹介
 Route::get('customer/dogs/index', [CustomerDogcontroller::class, 'index']);
@@ -84,9 +86,9 @@ Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('ad
 Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
 // メール
-Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.email.index');
-Route::get('/send-mail', [AdminEmailController::class, 'send']);
-Route::get('/email/import', [AdminEmailController::class, 'import'])->name('admin.email.import');
+Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.emails.index'); // ← name 修正
+Route::get('/admin/email/show/{email}', [AdminEmailController::class, 'show'])->name('admin.emails.show'); // ← {email} を追加
+
 
 // メニュー
 Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');
@@ -97,9 +99,10 @@ Route::put('/admin/menus/{menu}', [AdminMenuController::class, 'update'])->name(
 Route::delete('/admin/menus/{menu}', [AdminMenuController::class, 'destroy'])->name('admin.menus.destroy');
 
 // 予約
-Route::get('/admin/reservation/reservation_index', [AdminReservationController::class, 'index']);
-Route::get('/admin/reservation/reservation_create', [AdminReservationController::class, 'create']);
-Route::get('/admin/reservation/reservation_update', [AdminReservationController::class, 'update']);
+Route::get('/admin/reservations/index', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
+Route::get('/admin/reservations/{reservation}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
+
+
 
 // 売上
 Route::get('/admin/sales/sales_index', [AdminSalesController::class, 'index']);

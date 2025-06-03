@@ -46,6 +46,20 @@
                         <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                     @enderror
 
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2" for="staff_id">スタッフ</label>
+                        <select name="staff_id" id="staff_id" class="block w-full px-4 py-3 text-sm bg-white border rounded">
+                            @foreach ($staffs as $staff)
+                            <option value="{{ $staff->id }}" {{ old('staff_id') == $staff->id ? 'selected' : '' }}>
+                            {{ $staff->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('staff_id')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
+
                     {{-- 本文エラー --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="body">本文</label>
@@ -59,21 +73,4 @@
         </div>
     </div>
 </section>
-
-<script>
-    // ねこちゃんたち追加
-    $('#js-pulldown').select2();
-
-    // 画像プレビュー
-    document.getElementById('image').addEventListener('change', e => {
-        const previewImageNode = document.getElementById('previewImage')
-        const fileReader = new FileReader()
-        fileReader.onload = () => previewImageNode.src = fileReader.result
-        if (e.target.files.length > 0) {
-            fileReader.readAsDataURL(e.target.files[0])
-        } else {
-            previewImageNode.src = previewImageNode.dataset.noimage
-        }
-    })
-</script>
 @endsection

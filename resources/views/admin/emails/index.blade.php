@@ -10,7 +10,7 @@
             <table class="table-auto w-full">
                 <thead>
                 <tr class="text-xs text-gray-500 text-left">
-                    <th class="font-medium text-center">差出人</th>
+                    <th class="font-medium">差出人</th>
                     <th class="font-medium">受信日</th>
                 </tr>
                 </thead>

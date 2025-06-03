@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Admin\AdminShiftController;
+use App\Http\Controllers\Admin\AdminStaffController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSalesController;
 use App\Http\Controllers\Admin\AdminReservationController;
@@ -102,22 +102,13 @@ Route::delete('/admin/menus/{menu}', [AdminMenuController::class, 'destroy'])->n
 Route::get('/admin/reservations/index', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
 Route::get('/admin/reservations/{reservation}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
 
+// スタッフ
+Route::get('/admin/staffs/index', [AdminStaffController::class, 'index'])->name('admin.staffs.index');
+Route::get('/admin/staffs/create', [AdminStaffController::class, 'create'])->name('admin.staffs.create');
+Route::post('/admin/staffs/store', [AdminStaffController::class, 'store'])->name('admin.staffs.store');
+Route::get('/admin/staffs/{staff}/edit', [AdminStaffController::class, 'edit'])->name('admin.staffs.edit');
+Route::put('/admin/staffs/{staff}', [AdminStaffController::class, 'update'])->name('admin.staffs.update');
+Route::delete('/admin/staffs/{staff}', [AdminStaffController::class, 'destroy'])->name('admin.staffs.destroy');
 
-
-// 売上
-Route::get('/admin/sales/sales_index', [AdminSalesController::class, 'index']);
-Route::get('/admin/sales/sales_create', [AdminSalesController::class, 'create']);
-Route::get('/admin/sales/sales_update', [AdminSalesController::class, 'update']);
-
-// 設定
-Route::get('/admin/setting/setting_index', [AdminSettingController::class, 'index']);
-Route::get('/admin/setting/setting_create', [AdminSettingController::class, 'create']);
-Route::get('/admin/setting/setting_update', [AdminSettingController::class, 'update']);
-
-// シフト
-Route::get('/admin/shift/shift_index', [AdminShiftController::class, 'index']);
-Route::get('/admin/shift/shift_create', [AdminShiftController::class, 'create']);
-Route::get('/admin/shift/shift_update', [AdminShiftController::class, 'update']);
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

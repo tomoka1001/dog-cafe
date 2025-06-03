@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+    protected $table = 'blogs';
 
-    protected $fillable = ['title', 'body', 'image'];
+    protected $fillable = ['title', 'body', 'image', 'staff_id'];
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
 }

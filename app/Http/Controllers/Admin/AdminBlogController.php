@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\StoreBlogRequest;
 use App\Models\Blog;
+use App\Models\Staff;
 use App\Http\Requests\Admin\UpdateBlogRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,8 @@ class AdminBlogController extends Controller
     // ブログ一覧画面
     public function index()
     {
+        // dd(Blog::all());
+        // $staff = Staff::with('blogs')->find($id);
         $blogs = Blog::all();
         return view('admin.blogs.index', ['blogs' => $blogs]);
     }
@@ -22,8 +25,9 @@ class AdminBlogController extends Controller
     // ブログ投稿画面
     public function create()
     {
-        return view('admin.blogs.create');
-    }
+        $staffs = Staff::all();
+        return view('admin.blogs.create', compact('staffs'));
+    }    
 
     // ブログ投稿処理
     public function store(StoreBlogRequest $request)
@@ -31,6 +35,8 @@ class AdminBlogController extends Controller
         $validated = $request->validated();
         $validated['image'] = $request->file('image')->store('blogs', 'public');
         Blog::create($validated);
+
+        // dd($request);
 
         return to_route('admin.blogs.store')->with('success', 'ブログを投稿しました');
     }

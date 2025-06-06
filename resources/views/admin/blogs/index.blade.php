@@ -8,6 +8,13 @@
             <div class="ml-auto">
                 <a href="/admin/blogs/create" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">新規投稿</a>
             </div>
+            <div>
+                @if(session('message'))
+                    <div>
+                        {{ session('message') }}
+                    </div>
+                @endsession
+            </div>
         </div>
         <div class="pt-4 px-4 overflow-x-auto">
             <table class="table-auto w-full">

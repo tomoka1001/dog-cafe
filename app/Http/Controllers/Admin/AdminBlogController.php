@@ -16,6 +16,7 @@ class AdminBlogController extends Controller
     // ブログ一覧画面
     public function index()
     {
+        
         // dd(Blog::all());
         // $staff = Staff::with('blogs')->find($id);
         $blogs = Blog::all();
@@ -34,11 +35,11 @@ class AdminBlogController extends Controller
     {
         $validated = $request->validated();
         $validated['image'] = $request->file('image')->store('blogs', 'public');
-        Blog::create($validated);
+        $blog = Blog::create($validated);
 
         // dd($request);
 
-        return to_route('admin.blogs.store')->with('success', 'ブログを投稿しました');
+        return to_route('admin.blogs.store')->with('message', 'ブログを投稿しました');
     }
 
     /**

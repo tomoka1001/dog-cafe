@@ -56,9 +56,6 @@
                             @endforeach
                         </select>
                     </div>
-                    @error('staff_id')
-                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
-                    @enderror
 
                     {{-- 本文エラー --}}
                     <div class="mb-6">

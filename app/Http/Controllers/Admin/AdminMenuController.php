@@ -15,7 +15,7 @@ class AdminMenuController extends Controller
     public function index()
     {
         $menus = Menu::all();
-        return view('admin.menus.index', ['menus' => $menus]);
+        return view('admin.menus.index', compact('menus'));
     }
 
     // メニュー投稿画面
@@ -38,24 +38,24 @@ class AdminMenuController extends Controller
 
         // Dog モデルを使って、新しいレコードをデータベースに保存する。
         // $validated には、すでに「バリデーション済みの入力データ」と「保存された画像のパス」が含まれている。
-        Menu::create($validated);
+        $menu = Menu::create($validated);
 
-        return to_route('admin.menus.index')->with('success', 'メニューを登録しました');
+        return to_route('admin.menus.index')->with('massege', 'メニューを登録しました');
 
     }
     
     // 指定したIDのメニューを編集
     public function edit(string $id)
     {
-        $menu = Menu::find($id);
-        return view('admin.menus.edit', ['menu' => $menu]);
+        $menu = Menu::findOrFail($id);
+        return view('admin.menus.edit', compact('menu'));
     }
 
     // 指定したIDの更新処理
     public function update(UpdateMenuRequest $request, string $id)
     {
         $menu = Menu::findOrFail($id);
-        $updateData = $request->validated();
+        $validated = $request->validated();
 
         // 画像を変更する場合
         if($request->has('image')) {
@@ -64,18 +64,17 @@ class AdminMenuController extends Controller
             // 変更後の画像をアップロード、保存パスを更新データにセット
             $updateData['image'] = $request->file('image')->store('menus', 'public');
         }
-        $menu->update($updateData);
+        $menu->update($validated);
 
-        return to_route('admin.menus.index')->with('success', 'メニューを更新しました');
+        return to_route('admin.menus.index')->with('massege', 'メニューを更新しました');
     }
 
     // 指定したIDのブログの削除処理
-    public function destroy(string $id
-    )
+    public function destroy(string $id)
     {
         $menu = Menu::findOrFail($id);
-        $menu->delete();
         Storage::disk('public')->delete($menu->image);
+        $menu->delete();
 
         return to_route('admin.menus.index')->with('success', 'メニューを削除しました');
     }

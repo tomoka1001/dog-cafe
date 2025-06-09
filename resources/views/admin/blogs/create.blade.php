@@ -4,6 +4,13 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
+            {{-- <div>
+                @if(session('message'))
+                    <div>
+                        {{ session('message') }}
+                    </div>
+                @endsession
+            </div> --}}
             <form action="{{ route('admin.blogs.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex px-6 pb-4 border-b">
@@ -14,18 +21,6 @@
                 </div>
 
                 <div class="pt-4 px-6">
-                    <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    {{-- @if($errors->any())
-                    <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
-                        <ul>
-                            @foreach ( $errors->all() as $error)
-                            <li class="text-red-400">{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif --}}
-                    <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
-                    {{-- タイトル未入力 --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="title">タイトル</label>
                         <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="title" value="{{ old('title') }}">
@@ -50,7 +45,7 @@
                         <label class="block text-sm font-medium mb-2" for="staff_id">スタッフ</label>
                         <select name="staff_id" id="staff_id" class="block w-full px-4 py-3 text-sm bg-white border rounded">
                             @foreach ($staffs as $staff)
-                            <option value="{{ $staff->id }}" {{ old('staff_id') == $staff->id ? 'selected' : '' }}>
+                            <option value="{{ $staff->id }}" {{ old('staff_id') == $staff->id ? 'selected' : '' }}> 
                             {{ $staff->name }}
                             </option>
                             @endforeach

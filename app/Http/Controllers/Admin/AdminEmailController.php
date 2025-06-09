@@ -18,7 +18,7 @@ class AdminemailController extends Controller
     public function show(string $id)
     {
         $email = Email::findOrFail($id);
-        return view('admin.emails.show', ['email' => $email]);
+        return view('admin.emails.show', compact('email'));
     }
 
 

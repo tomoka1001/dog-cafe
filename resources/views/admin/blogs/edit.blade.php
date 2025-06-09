@@ -4,7 +4,7 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form action="{{ route('admin.blogs.store', ['blog' => $blog->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.blogs.update', $blog) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="flex px-6 pb-4 border-b">
@@ -15,21 +15,13 @@
                 </div>
 
                 <div class="pt-4 px-6">
-                    <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    @if($errors->any())
-                    <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
-                        <ul>
-                            @foreach ( $errors->all() as $error)
-                            <li class="text-red-400">{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="title">タイトル</label>
                         <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="title" value="{{ old('title', $blog->title) }}">
                     </div>
+                    @error('title')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
 
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
@@ -43,6 +35,9 @@
                         <label class="block text-sm font-medium mb-2" for="body">本文</label>
                         <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body', $blog->body) }}</textarea>
                     </div>
+                    @error('body')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
             </form>
         </div>

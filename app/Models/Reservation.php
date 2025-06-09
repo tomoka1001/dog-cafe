@@ -10,7 +10,6 @@ class Reservation extends Model
     use HasFactory;
     
     protected $table = 'reservations'; // テーブル名を明示（必要なら）
-
     protected $fillable = [
         'name',
         'name_kana',

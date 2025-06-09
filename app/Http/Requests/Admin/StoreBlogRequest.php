@@ -22,17 +22,10 @@ class StoreBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:255'],
-            'image' => [
-                'required',
-                'file', // ファイルがアップロードされている
-                'image', // 画像ファイルである
-                'max:2000', // ファイル容量が2000kb以下である
-                'mimes:jpeg,jpg,png', // 形式はjpegかpng
-                // 'dimensions:min_width=300,min_height=300,max_width=1200,max_height=1200', // 画像の解像度が300px * 300px ~ 1200px * 1200px
-            ],
-            'body' => ['required', 'max:20000'],
-            'staff_id' => ['required'],
+            'title' => 'required | max:255',
+            'image' => 'required | file | image | mimes:jpeg,jpg,png',
+            'body' => 'required | max:20000',
+            'staff_id' => 'required',
         ];
     }
 
@@ -42,7 +35,7 @@ class StoreBlogRequest extends FormRequest
             'title.required' => 'タイトルは必須です。',
             'image.required' => '画像をアップロードしてください。',
             'image.image' => '画像ファイルを選択してください。',
-            'image.dimensions' => '画像のサイズは300px以上、1200px以下にしてください。',
+            'image.mimes' => 'jpeg,jpg,pngの画像をアップロードしてください。',
             'body.required' => '本文は必須です。',
         ];
     }

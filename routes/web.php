@@ -1,14 +1,12 @@
 <?php
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminStaffController;
-use App\Http\Controllers\Admin\AdminSettingController;
-use App\Http\Controllers\Admin\AdminSalesController;
-use App\Http\Controllers\Admin\AdminReservationController;
-use App\Http\Controllers\Admin\AdminMenuController;
-use App\Http\Controllers\Admin\AdminEmailController;
 use App\Http\Controllers\Admin\AdminDogController;
 use App\Http\Controllers\Admin\AdminBlogController;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\JoinController;
+use App\Http\Controllers\Admin\AdminMenuController;
+use App\Http\Controllers\Admin\AdminEmailController;
+use App\Http\Controllers\Admin\AdminReservationController;
+
 use App\Http\Controllers\customer\CustomerLoginController;
 use App\Http\Controllers\customer\TopController;
 use Illuminate\Support\Facades\Route;
@@ -58,24 +56,13 @@ Route::get('customer/login/create', [CustomerLoginController::class, 'create'])-
 // 管理者側
 Route::get('/admin/index', [AdminController::class, 'index']);
 
-// 会員登録画面
-
-
-Route::get('admin/join/join_index', [JoinController::class, 'index']);
-Route::post('admin/join/join_check', [JoinController::class, 'create']);
-Route::get('admin/join/join_thanks', [JoinController::class, 'update']);
-
-// ログイン
-// Route::get('/admin/login/login', [LoginController::class, 'loginForm']);
-// Route::post('/admin/login/login', [LoginController::class, 'login'])->name('login');
-
-// ブログ
-Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
-Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
-Route::post('/admin/blogs/index', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
-Route::get('/admin/blogs/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
-Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
-Route::delete('/admin/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('admin.blogs.destroy');
+// スタッフ
+Route::get('/admin/staffs/index', [AdminStaffController::class, 'index'])->name('admin.staffs.index');
+Route::get('/admin/staffs/create', [AdminStaffController::class, 'create'])->name('admin.staffs.create');
+Route::post('/admin/staffs/store', [AdminStaffController::class, 'store'])->name('admin.staffs.store');
+Route::get('/admin/staffs/{staff}', [AdminStaffController::class, 'edit'])->name('admin.staffs.edit');
+Route::put('/admin/staffs/{staff}', [AdminStaffController::class, 'update'])->name('admin.staffs.update');
+Route::delete('/admin/staffs/{staff}', [AdminStaffController::class, 'destroy'])->name('admin.staffs.destroy');
 
 // 犬
 Route::get('/admin/dogs/index', [AdminDogController::class, 'index'])->name('admin.dogs.index');
@@ -85,10 +72,13 @@ Route::get('/admin/dogs/{dog}', [AdminDogController::class, 'edit'])->name('admi
 Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('admin.dogs.update');
 Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
-// メール
-Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.emails.index'); // ← name 修正
-Route::get('/admin/email/show/{email}', [AdminEmailController::class, 'show'])->name('admin.emails.show'); // ← {email} を追加
-
+// ブログ
+Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
+Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
+Route::post('/admin/blogs/index', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+Route::get('/admin/blogs/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
+Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
+Route::delete('/admin/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
 // メニュー
 Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');
@@ -98,17 +88,11 @@ Route::get('/admin/menus/{menu}', [AdminMenuController::class, 'edit'])->name('a
 Route::put('/admin/menus/{menu}', [AdminMenuController::class, 'update'])->name('admin.menus.update');
 Route::delete('/admin/menus/{menu}', [AdminMenuController::class, 'destroy'])->name('admin.menus.destroy');
 
+// メール
+Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.emails.index');
+Route::get('/admin/email/show/{email}', [AdminEmailController::class, 'show'])->name('admin.emails.show');
+
 // 予約
 Route::get('/admin/reservations/index', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
 Route::get('/admin/reservations/{reservation}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
 
-// スタッフ
-Route::get('/admin/staffs/index', [AdminStaffController::class, 'index'])->name('admin.staffs.index');
-Route::get('/admin/staffs/create', [AdminStaffController::class, 'create'])->name('admin.staffs.create');
-Route::post('/admin/staffs/store', [AdminStaffController::class, 'store'])->name('admin.staffs.store');
-Route::get('/admin/staffs/{staff}/edit', [AdminStaffController::class, 'edit'])->name('admin.staffs.edit');
-Route::put('/admin/staffs/{staff}', [AdminStaffController::class, 'update'])->name('admin.staffs.update');
-Route::delete('/admin/staffs/{staff}', [AdminStaffController::class, 'destroy'])->name('admin.staffs.destroy');
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

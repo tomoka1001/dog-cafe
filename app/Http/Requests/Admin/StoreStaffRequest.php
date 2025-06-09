@@ -23,7 +23,13 @@ class StoreStaffRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'staff_id' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '名前は必須です。'
         ];
     }
 }

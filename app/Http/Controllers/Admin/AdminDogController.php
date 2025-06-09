@@ -22,7 +22,7 @@ class AdminDogController extends Controller
         $dogs = Dog::all();
 
         // ['dogs' => $dogs] で、Bladeに $dogs という変数を渡しています。
-        return view('admin.dogs.index', ['dogs' => $dogs]);
+        return view('admin.dogs.index', compact('dogs'));
 
     }
 
@@ -65,9 +65,9 @@ class AdminDogController extends Controller
 
         // Dog モデルを使って、新しいレコードをデータベースに保存する。
         // $validated には、すでに「バリデーション済みの入力データ」と「保存された画像のパス」が含まれている。
-        Dog::create($validated);
+        $dob = Dog::create($validated);
 
-        return to_route('admin.dogs.index')->with('success', 'ワンちゃんを登録しました');
+        return to_route('admin.dogs.index')->with('massege', 'ワンちゃんを登録しました');
     }
 
     // 指定したIDの編集画面
@@ -78,7 +78,7 @@ class AdminDogController extends Controller
         // 見つからなければ404エラーを自動的に返します。これは find($id) と違って、null チェックを書く必要がない便利なメソッドです。
         $dog = Dog::findOrFail($id);
 
-        return view('admin.dogs.edit', ['dog' => $dog]);
+        return view('admin.dogs.edit', compact('dog'));
     }
 
 
@@ -86,7 +86,7 @@ class AdminDogController extends Controller
     public function update(UpdateDogRequest $request, string $id)
     {
         $dog = Dog::findOrFail($id);
-        $updateDate = $request->validated();
+        $validated = $request->validated();
 
         // 画像を更新する場合
         if($request->has('image')) {
@@ -95,7 +95,7 @@ class AdminDogController extends Controller
             // 更新後の画像をアップロード、保存パスを更新対象データにセット
             $updateDate['image'] = $request->file('image')->store('dogs', 'public');
         }
-        $dog->update($updateDate); 
+        $dog->update($validated); 
 
         return to_route('admin.dogs.index')->with('success', "WAN'sを更新しました");
     }
@@ -104,9 +104,9 @@ class AdminDogController extends Controller
     public function destroy(string $id)
     {
         $dog = Dog::findOrFail($id);
-        $dog->delete();
         // 更新前の画像削除
         Storage::disk('public')->delete($dog->image);
+        $dog->delete();
 
         return to_route('admin.dogs.index')->with('success', "WAN'sを削除しました");
 

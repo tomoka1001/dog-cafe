@@ -24,33 +24,31 @@ class AdminStaffController extends Controller
 
     public function store(StoreStaffRequest $request)
     {
-            Staff::create($request->validated());
-            return redirect()->route('admin.staffs.index')->with('success', '保存しました');
+        $validated = $request->validated();
+        $staff = Staff::create($validated);
+        return to_route('admin.staffs.index')->with('massege', 'スタッフを登録しました');
     }
 
     public function edit(string $id)
     {
         $staff = Staff::findOrFail($id);
-
-        return view('admin.staffs.edit', ['staff' => $staff]);
+        return view('admin.staffs.edit', compact('staff'));
     }
 
     public function update(UpdateStaffRequest $request, string $id)
     {
-        $Staff = Staff::findOrFail($id);
-        $updateDate = $request->validated();
-
-        $Staff->update($updateDate); 
-
-        return to_route('admin.Staffs.index')->with('success', "更新しました");
+        $staff = Staff::findOrFail($id);
+        $validated = $request->validated(); 
+        $staff = Staff::create($validated);
+        $staff->update($validated);
+        return to_route('admin.staffs.index')->with('massege', "更新しました");
     }
 
         public function destroy(string $id)
         {
             $staff = Staff::findOrFail($id);
             $staff->delete();
-    
-            return to_route('admin.staffs.index')->with('success', "削除しました");
+            return to_route('admin.staffs.index')->with('massege', "削除しました");
     
         }
 }

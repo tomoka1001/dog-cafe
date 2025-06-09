@@ -16,11 +16,10 @@ class AdminBlogController extends Controller
     // ブログ一覧画面
     public function index()
     {
-        
         // dd(Blog::all());
         // $staff = Staff::with('blogs')->find($id);
         $blogs = Blog::all();
-        return view('admin.blogs.index', ['blogs' => $blogs]);
+        return view('admin.blogs.index', compact('blogs'));
     }
 
     // ブログ投稿画面
@@ -54,15 +53,28 @@ class AdminBlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('admin.blogs.edit', ['blog' => $blog]);
+        return view('admin.blogs.edit', compact('blog'));
     }
 
     // 指定したIDのブログ更新処理
     public function update(UpdateBlogRequest $request, string $id)
     {
-        $blog = Blog::findOrFail($id);
-        $updateDate = $request->validated();
+        // $blog = Blog::findOrFail($id);string $id
+        // $updateDate = $request->validated();
 
+        // 画像を更新する場合
+        // if($request->has('image')) {
+        //     // 更新前の画像を削除
+        //     Storage::disk('public')->delete($blog->image);
+        //     // 変更後の画像をアップロード、保存パスを更新対象データにセット
+        //     $updateDate['image'] = $request->file('image')->store('blogs', 'public');
+        // }
+        // $blog->update($updateDate);
+
+        // return to_route('admin.blogs.index')->with('success', 'ブログを更新しました');
+
+        $blog = Blog::findOrFail($id);
+        $validated = $request->validated();
         // 画像を更新する場合
         if($request->has('image')) {
             // 更新前の画像を削除
@@ -70,20 +82,21 @@ class AdminBlogController extends Controller
             // 変更後の画像をアップロード、保存パスを更新対象データにセット
             $updateDate['image'] = $request->file('image')->store('blogs', 'public');
         }
-        $blog->update($updateDate);
+        $blog->update($validated);
 
-        return to_route('admin.blogs.index')->with('success', 'ブログを更新しました');
+        // dd($request);
+
+        return to_route('admin.blogs.index')->with('message', 'ブログを更新しました');
     }
 
     // 指定したIDのブログの削除処理
     public function destroy(string $id)
     {
         $blog = Blog::findOrFail($id);
-        $blog->delete();
         // 更新前の画像削除
         Storage::disk('public')->delete($blog->image);
-
-        return to_route('admin.blogs.index')->with('success', "ブログを削除しました");
+        $blog->delete();
+        return to_route('admin.blogs.index')->with('message', "ブログを削除しました");
 
     }
 }

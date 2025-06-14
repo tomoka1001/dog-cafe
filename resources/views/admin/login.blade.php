@@ -16,13 +16,6 @@
       <div class="flex max-w-md mx-auto flex-col text-center">
         <div class="mt-12 mb-8 p-8 bg-white rounded shadow">
           <h1 class="mb-6 text-3xl">管理者ログイン</h1>
-
-          @if($errors->any())
-            <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
-              <p class="text-red-400">ログインに失敗しました</p>
-            </div>
-          @endif
-
           <form action="{{ route('admin.login') }}" method="POST">
             @csrf
             <div class="flex mb-4 px-4 bg-blueGray-50 rounded">
@@ -31,6 +24,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
               </svg>
             </div>
+            @error('email')
+            <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+            @enderror
 
             <div class="flex mb-6 px-4 bg-blueGray-50 rounded">
               <input class="w-full py-4 text-xs placeholder-blueGray-400 font-semibold leading-none bg-blueGray-50 outline-none" type="password" placeholder="パスワード" name="password">

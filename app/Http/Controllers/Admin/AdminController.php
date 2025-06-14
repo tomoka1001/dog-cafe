@@ -11,7 +11,7 @@ class AdminController extends Controller
     // 管理者側画面
     public function index()
     {
-        return view('/admin/index');
+        return view('/admin/layouts/admin');
     }
     
 }

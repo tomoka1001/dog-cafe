@@ -35,15 +35,10 @@ class CustomerEmailController extends Controller
      */
     public function store(StoreEmailRequest $request)
     {
-        $email = Email::create([
-            'name' => $request->name,
-            'name_kana' => $request->name_kana,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'body' => $request->body,
-        ]);
+        $validated = $request->validated();
+        $email = Email::create($validated);
         
-        return redirect()->route('emails.complete'); // ← ここが重要！
+        return to_route('customer.emails.complete'); 
     }
     
 

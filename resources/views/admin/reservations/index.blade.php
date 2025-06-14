@@ -19,7 +19,7 @@
                     @foreach ($reservations as $reservation)
                     <tr @class(['text-sm', 'bg-gray-50' => $loop->odd])>
                         <td class="flex px-4 py-3 items-center">
-                            <p class="font-medium"> <a href="{{ route('admin.reservations.show', $reservation]) }}">{{ $reservation->name }}</a>
+                            <p class="font-medium"> <a href="{{ route('admin.reservations.show', $reservation) }}">{{ $reservation->name }}</a>
                         </td>
                         <td>{{ $reservation->reserved_date }}</td>
                         <td>{{ $reservation->updated_at }}</td>

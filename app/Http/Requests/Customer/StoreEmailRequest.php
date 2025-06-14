@@ -30,13 +30,6 @@ class StoreEmailRequest extends FormRequest
         ];
     }
 
-    public function attributes()
-    {
-        return [
-            'body' => 'お問い合せ内容'
-        ];
-    }
-
     public function messages()
     {
         return [

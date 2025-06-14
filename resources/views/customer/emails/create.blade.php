@@ -16,18 +16,6 @@
       なお、info@nekocafe.xx.xxからの返信が受信できるように事前に設定のご確認をお願い致します。
     </p>
     <div class="mt-8">
-      <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-      {{-- @if($errors->any())
-      <div class="mb-8 py-4 px-6 border border-pink-300 bg-pink-50 rounded">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li class="text-pink-400">{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-      @endif --}}
-      <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
-
       <form action="{{ route('customer.emails.store') }}" method="post">
         @csrf
         <div class="mb-4">

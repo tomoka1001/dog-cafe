@@ -5,98 +5,103 @@
     const reservationStatus = @json($status); // 先にグローバル変数として定義
 </script>
 <script src="/js/customer/reservations.js" defer></script>
-<link rel="stylesheet" href="/css/customer/reservations.css">
+<link rel="stylesheet" href="{{ asset('css/customer/reservation.css') }}">
 <form action="{{ route('customer.reservations.store') }}" method="POST">
     @csrf
-    <div>
-    <div class="container">
-        <h2>予約状況（{{ \Carbon\Carbon::today()->format('n/j') }}〜）</h2>
 
-        <div class="table-responsive">
-            <table class="table table-bordered text-center">
-                <thead>
-                    <tr>
-                        <th>時間</th>
-                        @foreach ($dates as $date)
+    <section>
+        <div class="main">
+            <p><a href="/customer/index">トップ</a>＞ご予約</p>
+            <h1>予約空き状況（{{ \Carbon\Carbon::today()->format('n/j') }}〜）</h1>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>時間</th>
+                            @foreach ($dates as $date)
                             <th>{{ \Carbon\Carbon::parse($date)->format('n/j (D)') }}</th>
-                        @endforeach
-                    </tr>
-                </thead>
-                <tbody>
+                            @endforeach
+                        </tr>
+                    </thead>
+                
+                    <tbody>
                     @foreach ($timeSlots as $time)
                         <tr>
                             <td><strong>{{ $time }}</strong></td>
                             @foreach ($dates as $date)
-                                <td>
-                                    {{ $status[$time][$date] }}
-                                </td>
+                            <td>
+                                {{ $status[$time][$date] }}
+                            </td>
                             @endforeach
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    
-        <div class="form">
-            <label for="name">お名前<span class="must">必須</span></label>
-            <input type="text"  id="name" name="name" class="@error('name') border-red-500 @enderror" value="{{ old('name') }}">
-            <p id="errorMessageName" class="error"></p>
+    </section>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="name">お名前<span>必須</span></label>
+            <input type="text"  id="name" name="name" value="{{ old('name') }}">
+            <p id="errorMessageName"></p>
         </div>
         @error('name')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="form">
+        <div class="form-group">
             <label for="name_kana">お名前（カナ）<span class="must">必須</span></label>
-            <input type="text"  id="name_kana" name="name_kana" class="@error('name_kana') border-red-500 @enderror" value="{{ old('name_kana') }}">
-            <p id="errorMessageNameKana" class="error"></p>
+            <input type="text"  id="name_kana" name="name_kana" value="{{ old('name_kana') }}">
+            <p id="errorMessageNameKana"></p>
         </div>
         @error('name_kana')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="form">
-            <label for="email">メールアドレス<span class="must">必須</span></label>
-            <input type="email"  id="email" name="email" class="@error('email') border-red-500 @enderror" value="{{ old('email') }}">
-            <p id="errorMessageEmail" class="error"></p>
+        <div class="form-group">
+            <label for="email">メールアドレス<span>必須</span></label>
+            <input type="email"  id="email" name="email" value="{{ old('email') }}">
+            <p id="errorMessageEmail"></p>
         </div>
         @error('email')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="form">
-            <label for="phone">電話番号<span class="must">必須</span></label>
-            <input type="text"  id="phone" name="phone" class="@error('phone') border-red-500 @enderror" value="{{ old('phone') }}">
-            <p id="errorMessagePhone" class="error"></p>
+        <div class="form-group">
+            <label for="phone">電話番号<span>必須</span></label>
+            <input type="text"  id="phone" name="phone" value="{{ old('phone') }}">
+            <p id="errorMessagePhone" ></p>
         </div>
         @error('phone')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="form">
+        <div class="form-group">
             <label for="time">ご予約人数<span class="must">必須</span></label>
-            <input type="number" id="people" name="people" min="1" max="10" class="@error('people') border-red-500 @enderror" value="{{ old('people') }}">
-            <p id="errorMessagePeople" class="error"></p>
+            <input type="number" id="people" name="people" min="1" max="10" value="{{ old('people') }}">
+            <p id="errorMessagePeople"></p>
         </div>
         @error('people')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="mb-3">
-            <label for="reserved_date" class="form-label">予約日<span class="must">必須</span></label>
-            <input type="date" name="reserved_date" id="reserved_date" class="@error('reserved_date') border-red-500 @enderror"
+        <div class="form-group">
+            <label for="reserved_date">予約日<span>必須</span></label>
+            <input type="date" name="reserved_date" id="reserved_date"
                    value="{{ old('reserved_date') }}" 
                    min="{{ \Carbon\Carbon::today()->toDateString() }}"
                    max="{{ \Carbon\Carbon::today()->addDays(13)->toDateString() }}" required>
         </div>
-        <p id="errorMessageDate" class="error"></p>
+        <p id="errorMessageDate"></p>
         @error('reserved_date')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="mb-3">
-            <label for="reserved_time" class="form-label">予約時間<span class="must">必須</span></label>
-            <select name="reserved_time" id="reserved_time" class="@error('reserved_time') border-red-500 @enderror" required>
+        <div class="form-group">
+            <label for="reserved_time">予約時間<span>必須</span></label>
+            <select name="reserved_time" id="reserved_time" required>
                 <option value="">選択してください</option>
                 @foreach (['11:00','12:00','13:00','14:00','15:00','16:00','17:00'] as $time)
                     <option value="{{ $time }}" {{ old('reserved_time') == $time ? 'selected' : '' }}>
@@ -105,17 +110,17 @@
                 @endforeach
             </select>
         </div>
-        <p id="errorMessageTime" class="error"></p>
+        <p id="errorMessageTime"></p>
         @error('reserved_time')
-        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
 
-        <div class="form">
-            <label for="body">ご要望<span class="any">任意</span></label>
+        <div class="form-group">
+            <label for="body">ご要望<span>任意</span></label>
             <textarea id="body" name="body">{{ old('body') }}</textarea>
         </div>
         <div>
-            <button type="submit" id="btn" class="btn">予約する</button>
+            <button type="submit" id="btn">予約する</button>
         </div>
     </div>
 </form>

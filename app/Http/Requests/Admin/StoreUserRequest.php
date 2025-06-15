@@ -25,6 +25,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required | string | max:255',
             'email' => 'required | string | email | max:255 | unique:users',
             'password' => 'required | string | min:8 | confirmed',
+            // 'password_confirmation' => 'string | min:8 | confirmed',
         ];
     }
 
@@ -34,6 +35,7 @@ class StoreUserRequest extends FormRequest
             'name.required' => '名前は必須です。',
             'email.required' => 'メールアドレスは必須です。',
             'password.required' => '8文字以上のパスワードを入力してください。',
+            // 'password_confirmation' => 'パスワードが正しくありません。',
         ];
     }
 }

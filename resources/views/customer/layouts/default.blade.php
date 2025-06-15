@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>@yield('title', "WAN's cafe")</title>
-        <link rel="stylesheet" href="/css/destyle.css">
+        <link rel="stylesheet" href="/css/customer/normalize.css">
         <link rel="stylesheet" href="/css/customer/layout.css">
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     </head>

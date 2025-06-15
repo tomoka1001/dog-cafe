@@ -1,6 +1,16 @@
-@extends('admin.layouts.admin')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>ユーザー登録</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/css/tailwind/tailwind.min.css">
 
-@section('content')
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <script src="/js/main.js"></script>
+</head>
+<body class="antialiased bg-body text-body font-body">
+    <div>
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
@@ -31,7 +41,7 @@
                     @enderror
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="password">パスワード</label>
+                        <label class="block text-sm font-medium mb-2" for="password">パスワード(8以上の英数字)</label>
                         <input id="password" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="password" name="password">
                     </div>
                     @error('passworld')
@@ -50,4 +60,6 @@
         </div>
     </div>
 </section>
-@endsection
+</div>
+</body>
+</html>

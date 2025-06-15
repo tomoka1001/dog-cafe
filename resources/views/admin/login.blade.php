@@ -38,6 +38,7 @@
               </button>
             </div>
             <button type="submit" class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded">ログイン</button>
+            <a href="/admin/users/create">ユーザー登録の手続きがまだの方</a>
           </form>
         </div>
       </div>

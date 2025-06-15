@@ -55,42 +55,42 @@ Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 // スタッフ
-Route::get('/admin/staffs/index', [AdminStaffController::class, 'index'])->name('admin.staffs.index');
-Route::get('/admin/staffs/create', [AdminStaffController::class, 'create'])->name('admin.staffs.create');
-Route::post('/admin/staffs/store', [AdminStaffController::class, 'store'])->name('admin.staffs.store');
+Route::get('/admin/staffs/index', [AdminStaffController::class, 'index'])->name('admin.staffs.index')->middleware('auth');
+Route::get('/admin/staffs/create', [AdminStaffController::class, 'create'])->name('admin.staffs.create')->middleware('auth');
+Route::post('/admin/staffs/store', [AdminStaffController::class, 'store'])->name('admin.staffs.store')->middleware('auth');
 Route::get('/admin/staffs/{staff}', [AdminStaffController::class, 'edit'])->name('admin.staffs.edit');
 Route::put('/admin/staffs/{staff}', [AdminStaffController::class, 'update'])->name('admin.staffs.update');
 Route::delete('/admin/staffs/{staff}', [AdminStaffController::class, 'destroy'])->name('admin.staffs.destroy');
 
 // 犬
-Route::get('/admin/dogs/index', [AdminDogController::class, 'index'])->name('admin.dogs.index');
-Route::get('/admin/dogs/create', [AdminDogController::class, 'create'])->name('admin.dogs.create');
-Route::post('/admin/dogs/index', [AdminDogController::class, 'store'])->name('admin.dogs.store');
+Route::get('/admin/dogs/index', [AdminDogController::class, 'index'])->name('admin.dogs.index')->middleware('auth');
+Route::get('/admin/dogs/create', [AdminDogController::class, 'create'])->name('admin.dogs.create')->middleware('auth');
+Route::post('/admin/dogs/index', [AdminDogController::class, 'store'])->name('admin.dogs.store')->middleware('auth');
 Route::get('/admin/dogs/{dog}', [AdminDogController::class, 'edit'])->name('admin.dogs.edit');
 Route::put('/admin/dogs/{dog}', [AdminDogController::class, 'update'])->name('admin.dogs.update');
 Route::delete('/admin/dogs/{dog}', [AdminDogController::class, 'destroy'])->name('admin.dogs.destroy');
 
 // ブログ
-Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index');
-Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create');
-Route::post('/admin/blogs/index', [AdminBlogController::class, 'store'])->name('admin.blogs.store');
+Route::get('/admin/blogs/index', [AdminBlogController::class, 'index'])->name('admin.blogs.index')->middleware('auth');
+Route::get('/admin/blogs/create', [AdminBlogController::class, 'create'])->name('admin.blogs.create')->middleware('auth');
+Route::post('/admin/blogs/index', [AdminBlogController::class, 'store'])->name('admin.blogs.store')->middleware('auth');
 Route::get('/admin/blogs/{blog}', [AdminBlogController::class, 'edit'])->name('admin.blogs.edit');
 Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin.blogs.update');
 Route::delete('/admin/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
 // メニュー
-Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index');
-Route::get('/admin/menus/create', [AdminMenuController::class, 'create'])->name('admin.menus.create');
-Route::post('/admin/menus/index', [AdminMenuController::class, 'store'])->name('admin.menus.store');
+Route::get('/admin/menus/index', [AdminMenuController::class, 'index'])->name('admin.menus.index')->middleware('auth');
+Route::get('/admin/menus/create', [AdminMenuController::class, 'create'])->name('admin.menus.create')->middleware('auth');
+Route::post('/admin/menus/index', [AdminMenuController::class, 'store'])->name('admin.menus.store')->middleware('auth');
 Route::get('/admin/menus/{menu}', [AdminMenuController::class, 'edit'])->name('admin.menus.edit');
 Route::put('/admin/menus/{menu}', [AdminMenuController::class, 'update'])->name('admin.menus.update');
 Route::delete('/admin/menus/{menu}', [AdminMenuController::class, 'destroy'])->name('admin.menus.destroy');
 
 // メール
-Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.emails.index');
-Route::get('/admin/email/show/{email}', [AdminEmailController::class, 'show'])->name('admin.emails.show');
+Route::get('/admin/email/index', [AdminEmailController::class, 'index'])->name('admin.emails.index')->middleware('auth');
+Route::get('/admin/email/show/{email}', [AdminEmailController::class, 'show'])->name('admin.emails.show')->middleware('auth');
 
 // 予約
-Route::get('/admin/reservations/index', [AdminReservationController::class, 'index'])->name('admin.reservations.index');
-Route::get('/admin/reservations/{reservation}', [AdminReservationController::class, 'show'])->name('admin.reservations.show');
+Route::get('/admin/reservations/index', [AdminReservationController::class, 'index'])->name('admin.reservations.index')->middleware('auth');
+Route::get('/admin/reservations/{reservation}', [AdminReservationController::class, 'show'])->name('admin.reservations.show')->middleware('auth');
 

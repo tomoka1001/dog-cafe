@@ -21,6 +21,6 @@ class UserController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         $user = User::create($validated);
 
-        return back()->with('success', 'ユーザー登録しました');
+        return to_route('admin.login')->with('success', 'ユーザー登録しました');
     }
 }

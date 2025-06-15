@@ -1,29 +1,32 @@
+## 管理機能表
+https://docs.google.com/spreadsheets/d/1LuCoJiY0yPxByJRZ8FdfCg_JHa75Wp5R/edit?usp=sharing&ouid=111144042051750450669&rtpof=true&sd=true
+
+
 ## 遷移図
-![スクリーンショット 2025-06-16 0 35 30（2）](https://github.com/user-attachments/assets/83de2f50-4620-482f-bc0e-89b398476b6a)
+![スクリーンショット 2025-06-16 2 38 52](https://github.com/user-attachments/assets/65575efb-b4ef-4211-b631-c0a0905e8830)
 
 
 ## ユーザー側トップページ
-![スクリーンショット 2025-06-15 23 41 58（2）](https://github.com/user-attachments/assets/918690fc-cdfd-4e50-967c-963beb298ff0)
+![スクリーンショット 2025-06-16 2 41 23](https://github.com/user-attachments/assets/6b4348be-794e-4918-9317-19597c0c6c93)
 
 
-## わんこ紹介、ブログ、メニュー表示
-![スクリーンショット 2025-06-15 23 43 35（2）](https://github.com/user-attachments/assets/83124e83-6ec9-4e67-ba3e-544ce3cfd009)
+## わんこ紹介、ブログ、メニュー表表示
+![スクリーンショット 2025-06-16 2 41 39](https://github.com/user-attachments/assets/26c5b319-c6e9-42f6-91f9-507fd3ec017c)
 
 
 ## お問い合わせ、予約画面送信後完了画面に移動
-![スクリーンショット 2025-06-15 23 44 29（2）](https://github.com/user-attachments/assets/741c64b4-a047-422c-9c91-a10180435210)
-![スクリーンショット 2025-06-15 23 45 05（2）](https://github.com/user-attachments/assets/57af6cf1-5858-44f2-b3d3-f11eddb65b65)
+![スクリーンショット 2025-06-16 2 41 51](https://github.com/user-attachments/assets/ee25caeb-ca2d-4a68-b16e-2e7d541c8b4e)
+![スクリーンショット 2025-06-16 2 42 24](https://github.com/user-attachments/assets/79a55dd6-350e-4972-97ed-a8d50ad62ceb)
 
 
 ## 管理者側、ユーザー登録後ログイン
-![スクリーンショット 2025-06-15 23 50 45（2）](https://github.com/user-attachments/assets/5b26fdb3-df06-416e-960e-bb83d53944ce)
+![スクリーンショット 2025-06-16 2 43 03](https://github.com/user-attachments/assets/7f42a76b-0b19-450d-b825-cc8bf5d6a334)
 
 
 ## 新規作成、更新、削除機能ありスタッフ、犬、ブログ、メニュー管理
-![スクリーンショット 2025-06-15 23 51 39（2）](https://github.com/user-attachments/assets/faf3c8b8-9a84-416e-95bd-e9521b6c1f16)
-![スクリーンショット 2025-06-15 23 51 35（2）](https://github.com/user-attachments/assets/366f1d23-eefd-4520-ad03-4f4a20e4c2c4)
-
+![スクリーンショット 2025-06-16 2 43 48](https://github.com/user-attachments/assets/574643de-5dba-4b23-8098-f232df362020)
+![スクリーンショット 2025-06-16 2 44 00](https://github.com/user-attachments/assets/fb8cb110-c4a2-4307-9931-58aeefbf01df)
 
 ## お問い合わせ、予約の内容も表示
-![スクリーンショット 2025-06-15 23 52 50（2）](https://github.com/user-attachments/assets/0ce482eb-1411-4cce-aa0d-f554cbe8cc7d)
-![スクリーンショット 2025-06-15 23 52 54（2）](https://github.com/user-attachments/assets/0bd2f925-9fa5-4059-9232-158e758519ff)
+![スクリーンショット 2025-06-16 2 44 12](https://github.com/user-attachments/assets/5ad9bf69-2229-48c8-be9f-aabcc3823207)
+![スクリーンショット 2025-06-16 2 44 38](https://github.com/user-attachments/assets/ef21167a-a049-4979-b074-5fa4cddba3e3)

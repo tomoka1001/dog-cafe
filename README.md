@@ -1,3 +1,7 @@
+## 遷移図
+![スクリーンショット 2025-06-16 0 35 30（2）](https://github.com/user-attachments/assets/83de2f50-4620-482f-bc0e-89b398476b6a)
+
+
 ## ユーザー側トップページ
 ![スクリーンショット 2025-06-15 23 41 58（2）](https://github.com/user-attachments/assets/918690fc-cdfd-4e50-967c-963beb298ff0)
 
